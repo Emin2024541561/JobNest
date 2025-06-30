@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.CandidateDashboardPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F3F4F6">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#06402B"
+              Padding="20,50,20,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0">
+                <Label x:Name="GreetingLabel"
+                       Text="Dobro jutro"
+                       FontSize="14"
+                       TextColor="#A8D5BA"/>
+                <Label x:Name="NameLabel"
+                       Text="Ime i prezime"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+            </StackLayout>
+
+            <Frame Grid.Column="1"
+                   WidthRequest="45"
+                   HeightRequest="45"
+                   CornerRadius="22.5"
+                   BackgroundColor="White"
+                   Padding="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped"/>
+                </Frame.GestureRecognizers>
+                <Label Text="👤"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </Frame>
+        </Grid>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <StackLayout Spacing="25">
+
+                <!-- Search Bar -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="20"
+                       Padding="12"
+                       HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSearchBarTapped"/>
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="🔍" FontSize="18" VerticalOptions="Center" Margin="5,0"/>
+                        <Label Grid.Column="1"
+                               Text="Traži posao ovdje"
+                               TextColor="Gray"
+                               FontSize="15"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Preporučeni poslovi -->
+                <StackLayout Spacing="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="Preporučeni poslovi"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#06402B"/>
+                        <Label Grid.Column="1"
+                               Text="More"
+                               FontSize="14"
+                               TextColor="#06402B"
+                               VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Job Card -->
+                    <Frame BackgroundColor="White"
+                           CornerRadius="15"
+                           Padding="15"
+                           HasShadow="True">
+                        <Grid ColumnSpacing="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame WidthRequest="45"
+                                   HeightRequest="45"
+                                   CornerRadius="22.5"
+                                   BackgroundColor="#DCF5EA"
+                                   Padding="0">
+                                <Label Text="💼"
+                                       FontSize="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="Software Engineer"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+                                <Label Text="Sarajevo, BiH"
+                                       FontSize="13"
+                                       TextColor="Gray"/>
+                                <Label Text="💰 1500 KM - 2500 KM"
+                                       FontSize="13"
+                                       TextColor="#06402B"
+                                       FontAttributes="Bold"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Najnoviji poslovi -->
+                <StackLayout Spacing="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="Najnoviji poslovi"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#06402B"/>
+                        <Label Grid.Column="1"
+                               Text="More"
+                               FontSize="14"
+                               TextColor="#06402B"
+                               VerticalOptions="Center"/>
+                    </Grid>
+
+                    <CollectionView x:Name="LatestJobsCollectionView"
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnLatestJobSelected">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White"
+                                       CornerRadius="15"
+                                       Padding="15"
+                                       HasShadow="True"
+                                       Margin="0,0,0,10">
+                                    <Grid ColumnSpacing="15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame WidthRequest="40"
+                                               HeightRequest="40"
+                                               CornerRadius="20"
+                                               BackgroundColor="#DCF5EA"
+                                               Padding="0">
+                                            <Label Text="🆕"
+                                                   FontSize="18"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"/>
+                                        </Frame>
+                                        <StackLayout Grid.Column="1" Spacing="2">
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="15"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"/>
+                                            <Label Text="{Binding Location}"
+                                                   FontSize="12"
+                                                   TextColor="Gray"/>
+                                            <Label Text="{Binding Salary}"
+                                                   FontSize="12"
+                                                   TextColor="#06402B"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="2"
+              BackgroundColor="White"
+              Padding="10,15"
+              Margin="0,0,0,10"
+              HeightRequest="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Početna -->
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button Text="🏠"
+                        BackgroundColor="Transparent"
+                        TextColor="#06402B"
+                        FontSize="20"
+                        Clicked="OnHomeClicked"/>
+                <Label Text="Početna" FontSize="12" TextColor="#06402B" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Pretraga -->
+            <StackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button Text="🔍"
+                        BackgroundColor="Transparent"
+                        TextColor="Gray"
+                        FontSize="20"
+                        Clicked="OnSearchBarTapped"/>
+                <Label Text="Pretraga" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Račun -->
+            <StackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button Text="👤"
+                        BackgroundColor="Transparent"
+                        TextColor="Gray"
+                        FontSize="20"
+                        Clicked="OnProfileTapped"/>
+                <Label Text="Račun" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

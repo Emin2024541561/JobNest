@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.HomeCompanyShellPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Main Content (Dashboard) -->
+        <ScrollView Grid.Row="0">
+            <StackLayout Padding="20" Spacing="20">
+                <Label Text="👋 Dobrodošli u JobNest"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#1B5E20"/>
+                <Label Text="Ovdje možete upravljati svojim oglasima za posao i profilom kompanije."
+                       FontSize="14"
+                       TextColor="Gray"/>
+                <Button Text="Objavi novi posao"
+                        BackgroundColor="#1B5E20"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="OnCreateJobClicked"/>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation Bar -->
+        <Grid Grid.Row="1"
+              BackgroundColor="White"
+              HeightRequest="60"
+              Padding="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Home -->
+            <StackLayout Grid.Column="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="🏠" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Početna" FontSize="12" TextColor="#1B5E20" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Pretraga -->
+            <StackLayout Grid.Column="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSearchTapped"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="🔍" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Pretraga" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Profil -->
+            <StackLayout Grid.Column="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="🏢" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Profil" FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

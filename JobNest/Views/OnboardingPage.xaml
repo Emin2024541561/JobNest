@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.OnboardingPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#06402B">
+
+    <Grid>
+        <StackLayout VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="25"
+                     Padding="40">
+
+            <!-- Nova ilustracija planinara -->
+            <Image Source="mountain.png"
+                   WidthRequest="150"
+                   HeightRequest="150"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <!-- Glavni tekst -->
+            <Label Text="CLIMB HIGHER WITH"
+                   FontSize="18"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+
+            <Label Text="JobNest app"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+
+        <!-- Navigation dugme na dnu -->
+        <StackLayout VerticalOptions="EndAndExpand" 
+                     Orientation="Horizontal" 
+                     HorizontalOptions="Center"
+                     Margin="0,0,0,40">
+
+            <Button BackgroundColor="White"
+                    TextColor="#06402B"
+                    Text="→"
+                    CornerRadius="25"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    FontSize="20"
+                    Clicked="OnNextClicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

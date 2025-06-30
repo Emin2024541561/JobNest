@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.SimpleCompanyProfilePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#F3F4F6"
+             Title="Profil kompanije">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <!-- Pozadinska slika -->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Pozadinska slika -->
+        <Image Grid.Row="0"
+               Source="company.png"
+               Aspect="AspectFill"/>
+
+        <!-- Scrollable content -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="20" Padding="20">
+
+                <!-- Company logo (emoji) -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="60"
+                       HeightRequest="120"
+                       WidthRequest="120"
+                       Padding="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoClicked"/>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="CompanyLogoLabel"
+                           Text="🏢"
+                           FontSize="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Company name -->
+                <Label x:Name="CompanyNameLabel"
+                       Text="Naziv kompanije"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#1B5E20"
+                       HorizontalOptions="Center"/>
+
+                <!-- Location -->
+                <Label x:Name="LocationLabel"
+                       Text="Lokacija"
+                       FontSize="14"
+                       TextColor="Gray"
+                       HorizontalOptions="Center"
+                       IsVisible="False"/>
+
+                <!-- Contact sections -->
+                <StackLayout Spacing="15" Margin="0,10,0,0">
+
+                    <!-- Phone -->
+                    <StackLayout x:Name="PhoneSection"
+                                 Orientation="Horizontal"
+                                 Spacing="10"
+                                 IsVisible="False">
+                        <Label Text="📞" FontSize="18"/>
+                        <Label x:Name="PhoneLabel"
+                               Text=""
+                               FontSize="16"
+                               TextColor="#333"/>
+                    </StackLayout>
+
+                    <!-- Email -->
+                    <StackLayout x:Name="EmailSection"
+                                 Orientation="Horizontal"
+                                 Spacing="10"
+                                 IsVisible="False">
+                        <Label Text="📧" FontSize="18"/>
+                        <Label x:Name="EmailLabel"
+                               Text=""
+                               FontSize="16"
+                               TextColor="#333"/>
+                    </StackLayout>
+
+                    <!-- Website -->
+                    <StackLayout x:Name="WebsiteSection"
+                                 Orientation="Horizontal"
+                                 Spacing="10"
+                                 IsVisible="False">
+                        <Label Text="🌐" FontSize="18"/>
+                        <Label x:Name="WebsiteLabel"
+                               Text=""
+                               FontSize="16"
+                               TextColor="#1B5E20"
+                               TextDecorations="Underline"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Description -->
+                <Frame x:Name="DescriptionSection"
+                       BackgroundColor="White"
+                       Padding="15"
+                       CornerRadius="10"
+                       HasShadow="True"
+                       IsVisible="False">
+                    <Label x:Name="DescriptionLabel"
+                           Text=""
+                           FontSize="14"
+                           TextColor="#555"/>
+                </Frame>
+
+                <!-- Action buttons -->
+                <StackLayout Spacing="10" Margin="0,10,0,40">
+                    <Button Text="Uredi profil"
+                            BackgroundColor="#06402B"
+                            TextColor="White"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            FontAttributes="Bold"
+                            Clicked="OnEditProfileClicked"/>
+
+                    <Button Text="Nazad"
+                            BackgroundColor="Transparent"
+                            TextColor="Gray"
+                            Clicked="OnBackClicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Bottom navigation -->
+        <Grid Grid.Row="2"
+              BackgroundColor="White"
+              HeightRequest="60"
+              Padding="0,5,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Početna -->
+            <StackLayout Grid.Column="0" Spacing="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeClicked"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="🏠" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Početna" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Kandidati -->
+            <StackLayout Grid.Column="1" Spacing="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCandidatesClicked"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="👥" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Kandidati" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Kompanija -->
+            <StackLayout Grid.Column="2" Spacing="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileClicked"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="🏢" FontSize="20" HorizontalOptions="Center"/>
+                <Label Text="Kompanija" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

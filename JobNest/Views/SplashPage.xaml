@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.SplashPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"
+                 Spacing="30"
+                 Padding="40">
+
+        <!-- Slika -->
+        <Image Source="briefcase_chart.png"
+               WidthRequest="200"
+               HeightRequest="200"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <!-- Naslov -->
+        <Label Text="Pronađi svoj posao iz snova"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+
+        <!-- Podnaslov -->
+        <Label Text="Prava prilika je samo korak daleko."
+               FontSize="16"
+               TextColor="Gray"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="JobNest.Views.LoginPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <ScrollView Grid.Row="0">
+            <StackLayout Padding="30" Spacing="28">
+
+                <!-- Naslov stranice -->
+                <StackLayout Spacing="5" Margin="0,0,0,10">
+                    <Label Text="Prijavi se"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#06402B"/>
+
+                    <Label Text="Molimo prijavite se na svoj registrovani nalog"
+                           FontSize="14"
+                           TextColor="Black"/>
+                </StackLayout>
+
+                <!-- Email Entry -->
+                <Frame CornerRadius="25" Padding="0" HasShadow="False" BorderColor="#CCCCCC">
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="you@growmore.com"
+                           FontSize="16"
+                           TextColor="Black"
+                           BackgroundColor="Transparent"
+                           Margin="15,0"/>
+                </Frame>
+
+                <!-- Password Entry -->
+                <Grid>
+                    <Frame CornerRadius="25" Padding="0" HasShadow="False" BorderColor="#CCCCCC">
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Password"
+                               IsPassword="True"
+                               FontSize="16"
+                               TextColor="Black"
+                               BackgroundColor="Transparent"
+                               Margin="15,0"/>
+                    </Frame>
+                    <Button x:Name="ShowPasswordButton"
+                            Text="👁"
+                            BackgroundColor="Transparent"
+                            FontSize="16"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Margin="0,0,15,0"
+                            Clicked="OnShowPasswordClicked"/>
+                </Grid>
+
+                <!-- Reset lozinke -->
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Spacing="5"
+                             Margin="0,10,0,0">
+                    <Label Text="Zaboravili ste lozinku?"
+                           FontSize="14"
+                           TextColor="Gray"/>
+                    <Label Text="Resetuj ovdje!"
+                           FontSize="14"
+                           TextColor="#06402B"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnResetPasswordClicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <!-- Prijavi se -->
+                <Button Text="PRIJAVI SE"
+                        BackgroundColor="#06402B"
+                        TextColor="White"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        Margin="0,20,0,0"
+                        Clicked="OnLoginClicked"/>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Napravi račun na dnu -->
+        <Grid Grid.Row="2"
+              Padding="30"
+              VerticalOptions="End"
+              BackgroundColor="White">
+            <Button Text="NAPRAVI RAČUN"
+                    BackgroundColor="#06402B"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Clicked="OnRegisterClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>
